@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 3 - React Components</title>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+
+        function Person(props) {
+            const { name, age, hobbies } = props;
+
+            return (
+                <div>
+                    <p>Learn some information about this person:</p>
+                    <p>Name: {name.length > 8 ? name.substring(0, 6) : name}</p>
+                    <p>Age: {age}</p>
+                    {age > 18 ? <h3>Please go vote!</h3> : <h3>You must be 18!</h3>}
+                    <h4>Hobbies:</h4>
+                    <ul>
+                        {hobbies.map((hobby, index) => <li key={index}>{hobby}</li>)}
+                    </ul>
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Person name="Alexander" age={19} hobbies={['Reading', 'Swimming', 'Coding']} />
+                    <Person name="Beth" age={17} hobbies={['Painting', 'Hiking']} />
+                    <Person name="Chris" age={22} hobbies={['Gaming', 'Running', 'Cooking']} />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+
+    </script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
+</html>
